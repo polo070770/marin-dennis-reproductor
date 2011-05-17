@@ -12,7 +12,7 @@ package edu.ub.prog2.MarinVegaJuan.vista;
 
 import edu.ub.prog2.MarinVegaJuan.controlador.CtrlReproductor;
 import edu.ub.prog2.MarinVegaJuan.model.FitxerAudio;
-import edu.ub.prog2.MarinVegaJuan.model.LlistaReproduccio;
+import edu.ub.prog2.QuitaquisTamayDennis.model.LlistaReproduccio;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
