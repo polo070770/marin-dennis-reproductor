@@ -10,7 +10,8 @@
  */
 package edu.ub.prog2.MarinVegaJuan.vista;
 
-import edu.ub.prog2.MarinVegaJuan.model.FitxerAudio;
+import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
+import edu.ub.prog2.cooperatiu.bridges.BridgeFitxerAudio;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class FrmAfegirFitxer extends javax.swing.JDialog {
     FitxerAudio nouFitxer;
+    BridgeFitxerAudio pontFitxerAudio = new BridgeFitxerAudio();
 
     /** Creates new form FrmeAfegirFitxerDialog */
     public FrmAfegirFitxer(java.awt.Frame parent, boolean modal) {
@@ -333,7 +335,7 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
            int anyDisc = Integer.valueOf(any.getText());
            int numSong = Integer.valueOf(posicioDisc.getText());
            
-           nouFitxer = new FitxerAudio(nom.getText(),autor.getText(),disc.getText(),anyDisc,numSong,discografica.getText(),genere.getText(),duracio.getText(),localitzacio.getText());
+           nouFitxer =  pontFitxerAudio.nouFitxerAudio(nom.getText(),autor.getText(),disc.getText(),anyDisc,numSong,discografica.getText(),genere.getText(),duracio.getText(),localitzacio.getText());
            return true;
            
        }
