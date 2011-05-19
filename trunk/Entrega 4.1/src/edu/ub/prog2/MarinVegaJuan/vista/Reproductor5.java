@@ -10,9 +10,11 @@
  */
 package edu.ub.prog2.MarinVegaJuan.vista;
 
-import edu.ub.prog2.MarinVegaJuan.controlador.CtrlReproductor;
-import edu.ub.prog2.MarinVegaJuan.model.FitxerAudio;
+//import edu.ub.prog2.MarinVegaJuan.controlador.CtrlReproductor;
+//import edu.ub.prog2.MarinVegaJuan.model.FitxerAudio;
+import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
 import edu.ub.prog2.QuitaquisTamayDennis.model.LlistaReproduccio;
+import edu.ub.prog2.QuitaquisTamayDennisMarinVegaJuan.reutilitzacio.CtrlReproductorReu;//maikel
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -35,7 +37,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Juan Marin
  */
 public class Reproductor5 extends javax.swing.JFrame {
-    private CtrlReproductor _ctrl;
+    private CtrlReproductorReu _ctrl;
     private String PLAY_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/play.png";
     private String PAUSE_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/pause.png";
     private String RANDOM_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/notRandom.png";
@@ -47,7 +49,7 @@ public class Reproductor5 extends javax.swing.JFrame {
     /** Creates new form Reproductor4 */
     public Reproductor5() {
         FrmAfegirFitxer nouFitxer;
-        _ctrl = new CtrlReproductor();
+        _ctrl = new CtrlReproductorReu();
         initComponents();
         //this.setExtendedState(Reproductor4.MAXIMIZED_BOTH);
     }
@@ -689,7 +691,7 @@ public class Reproductor5 extends javax.swing.JFrame {
     }
     void omplirLlistaBiblioteca(){
         llistaBiblioteca.clearSelection();
-        llistaBiblioteca.setModel(_ctrl.getArxiusBibliteca());
+        llistaBiblioteca.setModel(_ctrl.getArxiusBiblioteca());//ponia antes getArxiusBibliteca
     }
     void omplirLlistaCuaReproduccio(){
         llistaCuaReproduccio.clearSelection();
