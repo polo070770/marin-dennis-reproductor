@@ -1,20 +1,12 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * Reproductor5.java
  *
  * Created on 09-may-2011, 17:55:18
  */
 package edu.ub.prog2.MarinVegaJuan.vista;
 
-//import edu.ub.prog2.MarinVegaJuan.controlador.CtrlReproductor;
-//import edu.ub.prog2.MarinVegaJuan.model.FitxerAudio;
 import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
-import edu.ub.prog2.QuitaquisTamayDennis.model.LlistaReproduccio;
-import edu.ub.prog2.QuitaquisTamayDennisMarinVegaJuan.reutilitzacio.CtrlReproductorReu;//maikel
+import edu.ub.prog2.cooperatiu.bridges.BridgeCtrlReproductor;//maikel
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,26 +22,26 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Clase reproductor que comunicara amb les clases seguents
- * BridgeReproductor5  que comunicara amb le clase CtrlReproductor al paquet QuitaquisTamayDennis.controlador
+ * BridgeCtrlReproductor que comunicara amb la clase CtrlReproductor al paquet QuitaquisTamayDennis.controlador
  * BridgeFitxerAudio que comunicara amb la clase FitxerAudio al paquet QuitaquisTamayDennis.controlador
  * BridgeLlistaReproduccio que comunicara amb la clase LlistaReproduccio al paquet QuitaquisTamayDennis.controlador
  * 
  * @author Juan Marin
  */
 public class Reproductor5 extends javax.swing.JFrame {
-    private CtrlReproductorReu _ctrl;
+
+    private BridgeCtrlReproductor _ctrl;
     private String PLAY_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/play.png";
     private String PAUSE_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/pause.png";
     private String RANDOM_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/notRandom.png";
     private String NOT_RANDOM_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/random.png";
     private String LOOP_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/loop.png";
     private String NOT_LOOP_ICON = "/edu/ub/prog2/MarinVegaJuan/vista/icons/notLoop.png";
-    
 
     /** Creates new form Reproductor4 */
     public Reproductor5() {
-        FrmAfegirFitxer nouFitxer;
-        _ctrl = new CtrlReproductorReu();
+        //FrmAfegirFitxer nouFitxer;
+        _ctrl = new BridgeCtrlReproductor();
         initComponents();
         //this.setExtendedState(Reproductor4.MAXIMIZED_BOTH);
     }
@@ -482,7 +474,7 @@ public class Reproductor5 extends javax.swing.JFrame {
         //Mostrem la finestra de dialeg
         //Resultat emmagazema una constant que indica si s’ha
         //seleccionat o no un fitxer
-                int resultat = seleccio.showOpenDialog(this);
+        int resultat = seleccio.showOpenDialog(this);
         //Assegurem que hi hagi un fitxer seleccionat
         if (resultat == JFileChooser.APPROVE_OPTION) {
             try {
@@ -514,7 +506,7 @@ public class Reproductor5 extends javax.swing.JFrame {
     }//GEN-LAST:event_llistaLlistesReproduccioMouseClicked
 
     private void reproducirListaSeleccionadaPopupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reproducirListaSeleccionadaPopupButtonActionPerformed
-        if(llistaLlistesReproduccio.getSelectedIndex()!=-1){
+        if (llistaLlistesReproduccio.getSelectedIndex() != -1) {
             reproduirLlistaReproduccio(llistaLlistesReproduccio.getSelectedIndex());
             omplirLlistaCuaReproduccio();
         }
@@ -522,34 +514,31 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     private void novaLlistaPopupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaLlistaPopupButtonActionPerformed
         String nomNovaLlista = JOptionPane.showInputDialog(this,
-                                "Introdueix un nom per a la nova llista",
-                                "Nova llista",
-                                JOptionPane.INFORMATION_MESSAGE
-                                );
-        if(nomNovaLlista.length()!=0){
-            LlistaReproduccio llista;
-            llista = new LlistaReproduccio(nomNovaLlista);
-            _ctrl.afegirLlistaReproduccio(llista);
+                "Introdueix un nom per a la nova llista",
+                "Nova llista",
+                JOptionPane.INFORMATION_MESSAGE);
+        if (nomNovaLlista.length() != 0) {  
+            _ctrl.afegirLlistaReproduccio(nomNovaLlista);
             omplirLlistes();
-            
+
         }
     }//GEN-LAST:event_novaLlistaPopupButtonActionPerformed
 
     private void eliminarLlistaPopupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarLlistaPopupButtonActionPerformed
-       JOptionPane.showMessageDialog(this,
-                                    "Ho sentim, pero el botó no esta implementat encara!",
-                                    "Eliminar llista",
-                                    JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+                "Ho sentim, pero el botó no esta implementat encara!",
+                "Eliminar llista",
+                JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_eliminarLlistaPopupButtonActionPerformed
 
     private void addLlistaACuaReproduccioPopupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLlistaACuaReproduccioPopupButtonActionPerformed
-         if(llistaLlistesReproduccio.getSelectedIndex()!=-1){
+        if (llistaLlistesReproduccio.getSelectedIndex() != -1) {
             afegirLlistaACuaReproduccio(llistaLlistesReproduccio.getSelectedIndex());
         }
     }//GEN-LAST:event_addLlistaACuaReproduccioPopupButtonActionPerformed
 
     private void llistaArxiusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llistaArxiusMouseClicked
-         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
             reproduirFitxerAudioLlista(llistaLlistesReproduccio.getSelectedIndex(), llistaArxius.getSelectedIndex());
             evt.consume();
         }
@@ -560,11 +549,11 @@ public class Reproductor5 extends javax.swing.JFrame {
     }//GEN-LAST:event_reproduirArxiuDeLlistaPopupButtonActionPerformed
 
     private void addArxiuDeLlistaACuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArxiuDeLlistaACuaActionPerformed
-       afegirFitxerAudioLlistaACua(llistaLlistesReproduccio.getSelectedIndex(), llistaArxius.getSelectedIndex());
+        afegirFitxerAudioLlistaACua(llistaLlistesReproduccio.getSelectedIndex(), llistaArxius.getSelectedIndex());
     }//GEN-LAST:event_addArxiuDeLlistaACuaActionPerformed
 
     private void llistaBibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llistaBibliotecaMouseClicked
-       if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
             reproduirFitxerBiblio(llistaBiblioteca.getSelectedIndex());
             evt.consume();
         }
@@ -575,11 +564,11 @@ public class Reproductor5 extends javax.swing.JFrame {
     }//GEN-LAST:event_reproduirBibliotecaPopupActionPerformed
 
     private void reproduirFitxerBibliotecaPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reproduirFitxerBibliotecaPopupActionPerformed
-       reproduirFitxerBiblio( llistaBiblioteca.getSelectedIndex());
+        reproduirFitxerBiblio(llistaBiblioteca.getSelectedIndex());
     }//GEN-LAST:event_reproduirFitxerBibliotecaPopupActionPerformed
 
     private void addArxiuCuaBiblioPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArxiuCuaBiblioPopupActionPerformed
-        afegirFitxerACua( llistaBiblioteca.getSelectedIndex());
+        afegirFitxerACua(llistaBiblioteca.getSelectedIndex());
     }//GEN-LAST:event_addArxiuCuaBiblioPopupActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
@@ -589,12 +578,12 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     private void playPauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playPauseButtonActionPerformed
         _ctrl.pushPlayPause();
-        if(_ctrl.reproductorActiu()){
+        if (_ctrl.reproductorActiu()) {
             showPauseButton();
-        }else{
+        } else {
             showPlayButton();
         }
-            
+
     }//GEN-LAST:event_playPauseButtonActionPerformed
 
     private void randomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomButtonActionPerformed
@@ -620,8 +609,8 @@ public class Reproductor5 extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarArxiuPopupActionPerformed
 
     private void addFitxerBiblioPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFitxerBiblioPopupActionPerformed
-       metodeAfegirArxiu();
-       
+        metodeAfegirArxiu();
+
     }//GEN-LAST:event_addFitxerBiblioPopupActionPerformed
 
     private void saveDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDataButtonActionPerformed
@@ -632,7 +621,7 @@ public class Reproductor5 extends javax.swing.JFrame {
         //seleccionat o no un fitxer
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Base de datos ReProductor .data", "data");
         seleccio.setFileFilter(filter);
-         int resultat = seleccio.showSaveDialog(this);
+        int resultat = seleccio.showSaveDialog(this);
         //Assegurem que hi hagi un fitxer seleccionat
         if (resultat == JFileChooser.APPROVE_OPTION) {
             try {
@@ -640,15 +629,15 @@ public class Reproductor5 extends javax.swing.JFrame {
                 _ctrl.desarDades(seleccio.getSelectedFile());
                 omplirLlistes();
                 omplirLlistaBiblioteca();
-                showRandomStateButton();
-                showLoopStateButton();
+                //showRandomStateButton();
+                //showLoopStateButton();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Reproductor5.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(Reproductor5.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-  
+
     }//GEN-LAST:event_saveDataButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -660,8 +649,8 @@ public class Reproductor5 extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            //UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Reproductor5.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -675,132 +664,150 @@ public class Reproductor5 extends javax.swing.JFrame {
 
             public void run() {
                 new Reproductor5().setVisible(true);
-                
+
             }
         });
     }
-     void omplirLlistes(){
+
+    void omplirLlistes() {
         llistaLlistesReproduccio.clearSelection();
         llistaLlistesReproduccio.setModel(_ctrl.getNomLlistes());
-        
     }
-    void omplirLlistaArxius(int numLlista){
+
+    void omplirLlistaArxius(int numLlista) {
         llistaArxius.clearSelection();
-        if(llistaLlistesReproduccio.getSelectedIndex()==-1)llistaLlistesReproduccio.setSelectedIndex(0);
-        llistaArxius.setModel(_ctrl.getDescripcioArxius(numLlista+1));
+        System.out.println("NumLlista: " +numLlista);
+        if (llistaLlistesReproduccio.getSelectedIndex() == -1) {
+            llistaLlistesReproduccio.setSelectedIndex(0);
+        }
+        System.out.println("NumLlistaAfter: " +numLlista);
+        llistaArxius.setModel(_ctrl.getDescripcioArxius(numLlista));
     }
-    void omplirLlistaBiblioteca(){
+
+    void omplirLlistaBiblioteca() {
         llistaBiblioteca.clearSelection();
-        llistaBiblioteca.setModel(_ctrl.getArxiusBiblioteca());//ponia antes getArxiusBibliteca
+        llistaBiblioteca.setModel(_ctrl.getArxiusBiblioteca());
     }
-    void omplirLlistaCuaReproduccio(){
+
+    void omplirLlistaCuaReproduccio() {
         llistaCuaReproduccio.clearSelection();
         llistaCuaReproduccio.setModel(_ctrl.getArxiusCuaReproduccio());
     }
+
     private boolean reproduirLlistaReproduccio(int numLlista) {
         try {
-            _ctrl.reproduirUnaLlista(numLlista+1);
+            _ctrl.reproduirUnaLlista(numLlista + 1);
             omplirLlistaCuaReproduccio();
             showPauseButton();
-                        
+
         } catch (Exception e) {
             return false;
         }
         return true;
-   }
-    private boolean reproduirFitxerAudioLlista(int numLlista, int numFitxer){
-         try {
-            _ctrl.reproduirArxiuDunaLlista(numFitxer+1, numLlista+1);
-            omplirLlistaCuaReproduccio();
-            showPauseButton();
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-        
     }
-    private boolean afegirFitxerAudioLlistaACua(int numLlista, int numFitxer){
-         try {
-            _ctrl.afegirNouFitxerDeLlistaCuaReproduccio(numFitxer+1, numLlista+1);
-            omplirLlistaCuaReproduccio();
-                        
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-        
-    }
-    private boolean afegirLlistaACuaReproduccio(int numLlista){
-         try {
-            _ctrl.afegirNovaLlistaCuaReproduccio(numLlista+1);
-            omplirLlistaCuaReproduccio();
-                        
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
-        
-    }
-    private boolean reproduirFitxerBiblio(int numFitxer){
+
+    private boolean reproduirFitxerAudioLlista(int numLlista, int numFitxer) {
         try {
-            _ctrl.reproduirUnFitxer(numFitxer+1);
+            _ctrl.reproduirArxiuDunaLlista(numFitxer + 1, numLlista + 1);
             omplirLlistaCuaReproduccio();
             showPauseButton();
-                        
         } catch (Exception e) {
             return false;
         }
         return true;
-        
+
     }
-    private boolean afegirFitxerACua(int numFitxer){
+
+    private boolean afegirFitxerAudioLlistaACua(int numLlista, int numFitxer) {
         try {
-            _ctrl.afegirNouFitxerCuaReproduccio(numFitxer+1);
+            _ctrl.afegirNouFitxerDeLlistaCuaReproduccio(numFitxer + 1, numLlista + 1);
             omplirLlistaCuaReproduccio();
-                        
+
         } catch (Exception e) {
             return false;
         }
         return true;
-        
+
     }
-     private boolean reproduirTotaLaBiblioteca(){
+
+    private boolean afegirLlistaACuaReproduccio(int numLlista) {
+        try {
+            _ctrl.afegirNovaLlistaCuaReproduccio(numLlista + 1);
+            omplirLlistaCuaReproduccio();
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+
+    }
+
+    private boolean reproduirFitxerBiblio(int numFitxer) {
+        try {
+            _ctrl.reproduirUnFitxer(numFitxer + 1);
+            omplirLlistaCuaReproduccio();
+            showPauseButton();
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+
+    }
+
+    private boolean afegirFitxerACua(int numFitxer) {
+        try {
+            _ctrl.afegirNouFitxerCuaReproduccio(numFitxer + 1);
+            omplirLlistaCuaReproduccio();
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+
+    }
+
+    private boolean reproduirTotaLaBiblioteca() {
         try {
             _ctrl.reproduirLaBiblioteca();
             omplirLlistaCuaReproduccio();
             showPauseButton();
-                        
+
         } catch (Exception e) {
             return false;
         }
         return true;
-        
+
     }
-     void showPauseButton(){
-          playPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(PAUSE_ICON)));
-     }
-     void showPlayButton(){
-         playPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(PLAY_ICON)));
-     }
-     void showRandomStateButton(){
-         if(_ctrl.isRandom()){
+
+    void showPauseButton() {
+        playPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(PAUSE_ICON)));
+    }
+
+    void showPlayButton() {
+        playPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(PLAY_ICON)));
+    }
+
+    void showRandomStateButton() {
+        if (_ctrl.isRandom()) {
             randomButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(RANDOM_ICON)));
             randomButton.setSelected(true);
             omplirLlistaCuaReproduccio();
-        }else{
+        } else {
             randomButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(NOT_RANDOM_ICON)));
             randomButton.setSelected(false);
         }
-     }
-     void showLoopStateButton(){
-         if(_ctrl.isLoop()){
+    }
+
+    void showLoopStateButton() {
+        if (_ctrl.isLoop()) {
             ciclicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(LOOP_ICON)));
             ciclicButton.setSelected(true);
-        }else{
+        } else {
             ciclicButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(NOT_LOOP_ICON)));
             ciclicButton.setSelected(false);
         }
-     }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addArxiuCuaBiblioPopup;
     private javax.swing.JMenuItem addArxiuDeLlistaACua;
@@ -854,24 +861,26 @@ public class Reproductor5 extends javax.swing.JFrame {
      */
     private void reproduirFitxerSeguent() {
         _ctrl.reproduirSeguent();
-        if(_ctrl.reproductorActiu()){
+        if (_ctrl.reproductorActiu()) {
             showPauseButton();
-        }else{
+        } else {
             showPlayButton();
         }
     }
-     /**
+
+    /**
      * Funcio per reproduir el fitxer anterior
      */
     private void reproduirFitxerAnterior() {
         _ctrl.reproduirAnterior();
-        if(_ctrl.reproductorActiu()){
+        if (_ctrl.reproductorActiu()) {
             showPauseButton();
-        }else{
+        } else {
             showPlayButton();
         }
     }
-     /**
+
+    /**
      * Funcio que elimina el fitxer desitjat
      * @param sc
      */
@@ -879,8 +888,8 @@ public class Reproductor5 extends javax.swing.JFrame {
         // Hem de sumar un a cada index ja que 
         // a la funcio original per eliminar elements
         // els index comencen per 1
-        for(int i = 0; i<llistat.length; i++){
-            llistat[i]+=1;
+        for (int i = 0; i < llistat.length; i++) {
+            llistat[i] += 1;
         }
         _ctrl.eliminarFitxerBiblioteca(llistat);
         omplirLlistaBiblioteca();
@@ -888,16 +897,15 @@ public class Reproductor5 extends javax.swing.JFrame {
     }
 
     private void metodeAfegirArxiu() {
-         FrmAfegirFitxer nouFitxer = new FrmAfegirFitxer(this,true);
-       nouFitxer.setVisible(true);
-       FitxerAudio tmp = nouFitxer.getNouFitxer();
-       if(tmp instanceof FitxerAudio){
-            try{
+        FrmAfegirFitxer nouFitxer = new FrmAfegirFitxer(this, true);
+        nouFitxer.setVisible(true);
+        FitxerAudio tmp = nouFitxer.getNouFitxer();
+        if (tmp instanceof FitxerAudio) {
+            try {
                 _ctrl.afegirFitxerBiblioteca(tmp);
                 omplirLlistaBiblioteca();
-            }catch(Exception e){
-                
+            } catch (Exception e) {
             }
-       }
+        }
     }
 }

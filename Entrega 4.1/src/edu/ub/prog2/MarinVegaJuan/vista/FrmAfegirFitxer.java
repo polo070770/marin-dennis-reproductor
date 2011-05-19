@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmeAfegirFitxerDialog.java
  *
  * Created on 11-may-2011, 0:31:44
@@ -11,7 +6,6 @@
 package edu.ub.prog2.MarinVegaJuan.vista;
 
 import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
-import edu.ub.prog2.cooperatiu.bridges.BridgeFitxerAudio;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -23,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class FrmAfegirFitxer extends javax.swing.JDialog {
     FitxerAudio nouFitxer;
-    BridgeFitxerAudio pontFitxerAudio = new BridgeFitxerAudio();
+    //BridgeFitxerAudio pontFitxerAudio = new BridgeFitxerAudio();
 
     /** Creates new form FrmeAfegirFitxerDialog */
     public FrmAfegirFitxer(java.awt.Frame parent, boolean modal) {
@@ -334,14 +328,47 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
        }else{
            int anyDisc = Integer.valueOf(any.getText());
            int numSong = Integer.valueOf(posicioDisc.getText());
-           
-           nouFitxer =  pontFitxerAudio.nouFitxerAudio(nom.getText(),autor.getText(),disc.getText(),anyDisc,numSong,discografica.getText(),genere.getText(),duracio.getText(),localitzacio.getText());
+
+
+
+
+
+
+
+
+           nouFitxer =  ferFitxer(nom.getText(),autor.getText(),disc.getText(),anyDisc,numSong,discografica.getText(),genere.getText(),duracio.getText(),localitzacio.getText());
            return true;
            
        }
     }
     public FitxerAudio getNouFitxer(){
         return nouFitxer;
+    }
+    public FitxerAudio ferFitxer(String nom, String autor, String disc, int anyEdicio, int numSong, String discografica, String genre, String duracio, String path) {
+
+        FitxerAudio fa;
+
+
+        String nomFitxer = "";
+        String extensio = "";
+        String ubicacio = "";
+
+        //Obtenim l'extensió
+        int i = path.length() - 1;
+        while (path.charAt(i) != '.') {
+
+            extensio = path.charAt(i) + extensio;
+            i--;
+
+        }
+
+        //De la ubicació total obtenim el nom
+        nomFitxer = (new File(path)).getName();
+        ubicacio = (new File(path)).getParent();
+        fa = new FitxerAudio(ubicacio,nomFitxer,extensio,nom,autor,disc,anyEdicio,numSong,discografica,genre,duracio);
+
+        return fa;
+
     }
 
     

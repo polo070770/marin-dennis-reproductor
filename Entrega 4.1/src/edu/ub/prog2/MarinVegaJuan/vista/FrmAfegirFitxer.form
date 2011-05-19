@@ -78,13 +78,13 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="284" max="32767" attributes="0"/>
+              <EmptySpace pref="299" max="32767" attributes="0"/>
               <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="desarButton" min="-2" pref="92" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jSeparator1" alignment="1" pref="479" max="32767" attributes="0"/>
+          <Component id="jSeparator1" alignment="1" pref="489" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
