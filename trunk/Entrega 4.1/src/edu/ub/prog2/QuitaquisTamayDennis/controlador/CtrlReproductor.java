@@ -336,6 +336,18 @@ public class CtrlReproductor {
         return mi_reproductor.isPLAY();
 
     }
+
+    public boolean isRandom(){
+
+        return mi_reproductor.isRANDOM();
+
+    }
+
+    public boolean isCyclic(){
+
+        return mi_reproductor.isCYCLIC();
+
+    }
     //-------------------------------------------------------------------------//
     //--------------------------Guardar-dades----------------------------------//
     //-------------------------------------------------------------------------//
