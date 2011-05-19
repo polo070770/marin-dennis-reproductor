@@ -366,6 +366,8 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
         nomFitxer = (new File(path)).getName();
         ubicacio = (new File(path)).getParent();
         fa = new FitxerAudio(ubicacio,nomFitxer,extensio,nom,autor,disc,anyEdicio,numSong,discografica,genre,duracio);
+        //fa = new FitxerAudio();
+
 
         return fa;
 

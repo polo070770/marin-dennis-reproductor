@@ -28,7 +28,7 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
 
     //Declaraciones
     CtrlReproductor ctrl;
-    DadesReproductor dades;
+    //DadesReproductor dades;
 
     public BridgeCtrlReproductor() {
 
@@ -135,7 +135,7 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
         f.close();
 
 
-        dades = dadesRecuperades;
+        ctrl.setDades(dadesRecuperades);
 
 
     }
@@ -149,7 +149,7 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
 
         ObjectOutputStream escriure = new ObjectOutputStream(f);
 
-        escriure.writeObject(dades);
+        escriure.writeObject(ctrl.getDades());
 
         f.close();
     }
@@ -176,13 +176,25 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
     }
 
     @Override
-    public void reproduirUnaLlista(int num) throws FitxerAudioErrorException {
-        ctrl.reproduir(ctrl.obteArrayListRepro(num));
+    public boolean reproduirUnaLlista(int num)  {
+        try {
+            ctrl.reproduir(ctrl.obteArrayListRepro(num));
+        } catch (FitxerAudioErrorException ex) {
+            Logger.getLogger(BridgeCtrlReproductor.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public void reproduirArxiuDunaLlista(int pos, int num) throws FitxerAudioErrorException {
-        ctrl.reproduir(ctrl.obteArrayListRepro(pos).get(num));
+    public boolean reproduirArxiuDunaLlista(int pos, int num)  {
+        try {
+            ctrl.reproduir(ctrl.obteArrayListRepro(pos).get(num));
+        } catch (FitxerAudioErrorException ex) {
+            Logger.getLogger(BridgeCtrlReproductor.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -200,10 +212,14 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
     }
 
     @Override
-    public void reproduirUnFitxer(int num) throws FitxerAudioErrorException {
-
-        ctrl.reproduir(ctrl.obteMiBiblioteca().get(num));
-
+    public boolean reproduirUnFitxer(int num)  {
+        try {
+            ctrl.reproduir(ctrl.obteMiBiblioteca().get(num));
+        } catch (FitxerAudioErrorException ex) {
+            Logger.getLogger(BridgeCtrlReproductor.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -212,8 +228,14 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
     }
 
     @Override
-    public void reproduirLaBiblioteca() throws FitxerAudioErrorException {
-        ctrl.reproduir(ctrl.obteMiBiblioteca());
+    public boolean reproduirLaBiblioteca() {
+        try {
+            ctrl.reproduir(ctrl.obteMiBiblioteca());
+        } catch (FitxerAudioErrorException ex) {
+            Logger.getLogger(BridgeCtrlReproductor.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override

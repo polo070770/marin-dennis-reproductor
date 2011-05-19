@@ -212,6 +212,7 @@ public class CtrlReproductor {
         mi_reproductor = new ReproductorAudio();
 
         mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
+        System.out.println(audio.toString());
         mi_reproductor.Play();
 
     }
@@ -225,7 +226,6 @@ public class CtrlReproductor {
         for (FitxerAudio audio : al) {
 
             mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
-
         }
         mi_reproductor.Play();
 
@@ -393,5 +393,12 @@ public class CtrlReproductor {
         fitxer.close();
         dadesReproductor = dadesRecuperades;
 
+    }
+    public DadesReproductor getDades(){
+        return this.dadesReproductor;
+    }
+    public boolean setDades(DadesReproductor dades){
+        this.dadesReproductor = dades;
+        return true;
     }
 }

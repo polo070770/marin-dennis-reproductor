@@ -495,7 +495,10 @@ public class Reproductor5 extends javax.swing.JFrame {
     }//GEN-LAST:event_loadDataButtonActionPerformed
 
     private void llistaLlistesReproduccioValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_llistaLlistesReproduccioValueChanged
-        omplirLlistaArxius(llistaLlistesReproduccio.getSelectedIndex());
+        if(llistaLlistesReproduccio.getSelectedIndex()!=-1){
+            omplirLlistaArxius(llistaLlistesReproduccio.getSelectedIndex());
+        }
+        
     }//GEN-LAST:event_llistaLlistesReproduccioValueChanged
 
     private void llistaLlistesReproduccioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llistaLlistesReproduccioMouseClicked
@@ -629,8 +632,8 @@ public class Reproductor5 extends javax.swing.JFrame {
                 _ctrl.desarDades(seleccio.getSelectedFile());
                 omplirLlistes();
                 omplirLlistaBiblioteca();
-                //showRandomStateButton();
-                //showLoopStateButton();
+                showRandomStateButton();
+                showLoopStateButton();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Reproductor5.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -744,11 +747,12 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     private boolean reproduirFitxerBiblio(int numFitxer) {
         try {
-            _ctrl.reproduirUnFitxer(numFitxer + 1);
+            _ctrl.reproduirUnFitxer(numFitxer);
             omplirLlistaCuaReproduccio();
             showPauseButton();
 
         } catch (Exception e) {
+            System.out.println(e.toString());
             return false;
         }
         return true;
