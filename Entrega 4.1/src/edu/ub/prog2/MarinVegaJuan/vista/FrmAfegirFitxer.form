@@ -34,12 +34,12 @@
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="buscarButton" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="localitzacio" alignment="1" pref="315" max="32767" attributes="0"/>
+                  <Component id="localitzacio" alignment="1" pref="330" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel4" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
                   <Component id="disc" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="posicioDisc" min="-2" pref="155" max="-2" attributes="0"/>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Component id="jLabel14" min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
                   <Component id="discografica" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
               <Component id="desarButton" min="-2" pref="92" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jSeparator1" alignment="1" pref="489" max="32767" attributes="0"/>
+          <Component id="jSeparator1" alignment="1" pref="494" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

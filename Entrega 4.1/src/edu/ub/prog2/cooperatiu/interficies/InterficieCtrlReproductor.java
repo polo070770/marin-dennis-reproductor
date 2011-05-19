@@ -1,7 +1,6 @@
 package edu.ub.prog2.cooperatiu.interficies;
 
 import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
-import edu.ub.prog2.utils.FitxerAudioErrorException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -57,19 +56,19 @@ public interface InterficieCtrlReproductor {
 
     public abstract void premerReproduccioAleatoria();
 
-    public abstract void reproduirUnaLlista(int num) throws FitxerAudioErrorException;
+    public abstract boolean reproduirUnaLlista(int num);
 
-    public abstract void reproduirArxiuDunaLlista(int pos, int num) throws FitxerAudioErrorException;
+    public abstract boolean reproduirArxiuDunaLlista(int pos, int num);
 
     public abstract void afegirNouFitxerDeLlistaCuaReproduccio(int pos, int num);
 
     public abstract void afegirNovaLlistaCuaReproduccio(int pos);
 
-    public abstract void reproduirUnFitxer(int num)throws FitxerAudioErrorException;
+    public abstract boolean reproduirUnFitxer(int num);
 
     public abstract void afegirNouFitxerCuaReproduccio(int pos);
 
-    public abstract void reproduirLaBiblioteca()throws FitxerAudioErrorException;
+    public abstract boolean reproduirLaBiblioteca();
 
     public abstract boolean isRandom();
 
