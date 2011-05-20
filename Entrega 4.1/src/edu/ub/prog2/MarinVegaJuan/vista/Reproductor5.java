@@ -679,11 +679,9 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     void omplirLlistaArxius(int numLlista) {
         llistaArxius.clearSelection();
-        System.out.println("NumLlista: " +numLlista);
         if (llistaLlistesReproduccio.getSelectedIndex() == -1) {
             llistaLlistesReproduccio.setSelectedIndex(0);
         }
-        System.out.println("NumLlistaAfter: " +numLlista);
         llistaArxius.setModel(_ctrl.getDescripcioArxius(numLlista));
     }
 

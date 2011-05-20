@@ -136,8 +136,15 @@ public class ReproductorAudio extends ReproductorBasic {
 
         if (cua.getLlistaAudio().size() == 1) {
             //Reproduciendo un fichero
-            stop();
 
+            if (this.CYCLIC) {
+                this.pista = 0;
+                Play();
+
+            } else {
+
+                stop();
+            }
         } else {
 
             this.pista++;
@@ -176,6 +183,7 @@ public class ReproductorAudio extends ReproductorBasic {
             try {
 
                 stop();
+                System.out.println(cua.getRutaCompleta(pista));
                 openAudioFile(cua.getRutaCompleta(pista));
 
             } catch (FitxerAudioErrorException ex) {

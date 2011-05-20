@@ -167,12 +167,12 @@ public class BridgeCtrlReproductor implements InterficieCtrlReproductor {
 
     @Override
     public void premerReproduccioCiclica() {
-        ctrl.reproCiclic();
+        System.out.println(ctrl.reproCiclic());
     }
 
     @Override
     public void premerReproduccioAleatoria() {
-        ctrl.reproAleatori();
+        System.out.println(ctrl.reproAleatori());
     }
 
     @Override
