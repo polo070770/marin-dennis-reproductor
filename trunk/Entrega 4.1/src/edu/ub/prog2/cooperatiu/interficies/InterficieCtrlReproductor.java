@@ -12,11 +12,6 @@ import javax.swing.DefaultListModel;
  * @author maikel
  */
 
-//Conte els metodes que utilitzem a la vista --> edu.ub.prog2.MarinVegaJuan.vista
-//Tenim:
-//La classe reproductor 5
-//
-
 public interface InterficieCtrlReproductor {
     
     ///////////////////////////////////////////

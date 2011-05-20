@@ -137,8 +137,8 @@ public class FitxerAudio extends Fitxer implements Serializable {
      * @return rutaCompleta
      */
     public String getRutaNomExtensio() {
-
-        String rutaCompleta = super.getRutaFitxer() + "." + super.getExtensioFitxer();
+        
+        String rutaCompleta = super.getRutaFitxer() +"." + super.getExtensioFitxer();
         return rutaCompleta;
 
     }

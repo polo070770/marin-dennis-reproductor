@@ -347,27 +347,42 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
     public FitxerAudio ferFitxer(String nom, String autor, String disc, int anyEdicio, int numSong, String discografica, String genre, String duracio, String path) {
 
         FitxerAudio fa;
-
-
         String nomFitxer = "";
         String extensio = "";
         String ubicacio = "";
 
-        //Obtenim l'extensió
-        int i = path.length() - 1;
-        while (path.charAt(i) != '.') {
 
-            extensio = path.charAt(i) + extensio;
-            i--;
+
+        //De la direccioFitxer que ens entra l'usuari
+        //separem la rutaTotal de l'extensió
+
+        int m = 0;
+        while (path.charAt(m) != '.') {
+
+            ubicacio += path.charAt(m);
+            m++;
+
+        }
+
+        //Obtenim l'extensió
+        int n = path.length() - 1;
+        while (path.charAt(n) != '.') {
+
+            extensio = path.charAt(n) + extensio;
+            n--;
 
         }
 
         //De la ubicació total obtenim el nom
-        nomFitxer = (new File(path)).getName();
-        ubicacio = (new File(path)).getParent();
-        fa = new FitxerAudio(ubicacio,nomFitxer,extensio,nom,autor,disc,anyEdicio,numSong,discografica,genre,duracio);
-        //fa = new FitxerAudio();
+        nomFitxer = (new File(ubicacio)).getName();
+        ubicacio = (new File(ubicacio)).getPath();
 
+
+        System.out.println(nomFitxer);
+        System.out.println(extensio);
+        System.out.println(ubicacio);
+
+        fa = new FitxerAudio(ubicacio,nomFitxer,extensio,nom,autor,disc,anyEdicio,numSong,discografica,genre,duracio);
 
         return fa;
 
