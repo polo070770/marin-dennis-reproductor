@@ -209,24 +209,29 @@ public class CtrlReproductor {
     
     public void reproduir(FitxerAudio audio) throws FitxerAudioErrorException {
 
+        parar();
+        
         mi_reproductor = new ReproductorAudio();
 
         mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
         System.out.println(audio.toString());
+        System.out.println(mi_reproductor.pista);
         mi_reproductor.Play();
 
     }
 
     public void reproduir(ArrayList<FitxerAudio> al) throws FitxerAudioErrorException {
 
-        mi_reproductor = new ReproductorAudio();
-
         parar();
+        
+        mi_reproductor = new ReproductorAudio();
 
         for (FitxerAudio audio : al) {
 
             mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
+            
         }
+
         mi_reproductor.Play();
 
 

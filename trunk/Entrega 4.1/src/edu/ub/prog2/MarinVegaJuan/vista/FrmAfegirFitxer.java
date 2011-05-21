@@ -16,8 +16,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author marin
  */
 public class FrmAfegirFitxer extends javax.swing.JDialog {
+
     FitxerAudio nouFitxer;
-    //BridgeFitxerAudio pontFitxerAudio = new BridgeFitxerAudio();
 
     /** Creates new form FrmeAfegirFitxerDialog */
     public FrmAfegirFitxer(java.awt.Frame parent, boolean modal) {
@@ -275,19 +275,17 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
         int resultat = seleccio.showOpenDialog(this);
         //Assegurem que hi hagi un fitxer seleccionat
         if (resultat == JFileChooser.APPROVE_OPTION) {
-         fitxer=seleccio.getSelectedFile();
-         String ruta = fitxer.toString();
-         localitzacio.setText(ruta);
+            fitxer = seleccio.getSelectedFile();
+            String ruta = fitxer.toString();
+            localitzacio.setText(ruta);
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void desarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desarButtonActionPerformed
-       if(crearNouFitxer()){
-        this.dispose();
-       }
+        if (crearNouFitxer()) {
+            this.dispose();
+        }
     }//GEN-LAST:event_desarButtonActionPerformed
-
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField any;
     private javax.swing.JTextField autor;
@@ -318,40 +316,32 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private boolean crearNouFitxer() {
-       if(localitzacio.getText().length()==0){
-           JOptionPane.showMessageDialog(this,
-                        "No has seleccionata cap fitxer!!",
-                        "Atenció",
-                        JOptionPane.INFORMATION_MESSAGE);
-           return false;
-           
-       }else{
-           int anyDisc = Integer.valueOf(any.getText());
-           int numSong = Integer.valueOf(posicioDisc.getText());
+        if (localitzacio.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this,
+                    "No has seleccionata cap fitxer!!",
+                    "Atenció",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return false;
 
+        } else {
+            int anyDisc = Integer.valueOf(any.getText());
+            int numSong = Integer.valueOf(posicioDisc.getText());
+            nouFitxer = ferFitxer(nom.getText(), autor.getText(), disc.getText(), anyDisc, numSong, discografica.getText(), genere.getText(), duracio.getText(), localitzacio.getText());
+            return true;
 
-
-
-
-
-
-
-           nouFitxer =  ferFitxer(nom.getText(),autor.getText(),disc.getText(),anyDisc,numSong,discografica.getText(),genere.getText(),duracio.getText(),localitzacio.getText());
-           return true;
-           
-       }
+        }
     }
-    public FitxerAudio getNouFitxer(){
+
+    public FitxerAudio getNouFitxer() {
         return nouFitxer;
     }
+
     public FitxerAudio ferFitxer(String nom, String autor, String disc, int anyEdicio, int numSong, String discografica, String genre, String duracio, String path) {
 
-        FitxerAudio fa;
+        FitxerAudio fitxerAudio;
         String nomFitxer = "";
         String extensio = "";
         String ubicacio = "";
-
-
 
         //De la direccioFitxer que ens entra l'usuari
         //separem la rutaTotal de l'extensió
@@ -377,16 +367,9 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
         nomFitxer = (new File(ubicacio)).getName();
         ubicacio = (new File(ubicacio)).getPath();
 
+        fitxerAudio = new FitxerAudio(ubicacio, nomFitxer, extensio, nom, autor, disc, anyEdicio, numSong, discografica, genre, duracio);
 
-        System.out.println(nomFitxer);
-        System.out.println(extensio);
-        System.out.println(ubicacio);
-
-        fa = new FitxerAudio(ubicacio,nomFitxer,extensio,nom,autor,disc,anyEdicio,numSong,discografica,genre,duracio);
-
-        return fa;
+        return fitxerAudio;
 
     }
-
-    
 }
