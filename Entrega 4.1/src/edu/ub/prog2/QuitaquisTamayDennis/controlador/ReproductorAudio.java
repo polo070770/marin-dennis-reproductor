@@ -183,7 +183,9 @@ public class ReproductorAudio extends ReproductorBasic {
             try {
 
                 stop();
-                openAudioFile(cua.getRutaCompleta(pista));
+                String ruta = cua.getRutaCompleta(pista);
+                System.out.println(ruta);
+                openAudioFile(ruta);
 
             } catch (FitxerAudioErrorException ex) {
 
@@ -196,7 +198,7 @@ public class ReproductorAudio extends ReproductorBasic {
     }
 
     public void Play(String ruta) {
-
+           System.out.println(ruta);
         try {
 
             stop();

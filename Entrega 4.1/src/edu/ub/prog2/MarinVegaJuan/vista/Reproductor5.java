@@ -648,8 +648,8 @@ public class Reproductor5 extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            //UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Reproductor5.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

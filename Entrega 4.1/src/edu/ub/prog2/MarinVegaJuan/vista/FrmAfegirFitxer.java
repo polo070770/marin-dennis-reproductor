@@ -342,7 +342,7 @@ public class FrmAfegirFitxer extends javax.swing.JDialog {
         String nomFitxer = "";
         String extensio = "";
         String ubicacio = "";
-
+    System.out.println(path);
         //De la direccioFitxer que ens entra l'usuari
         //separem la rutaTotal de l'extensió
 
