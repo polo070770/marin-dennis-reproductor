@@ -5,7 +5,7 @@
  */
 package edu.ub.prog2.MarinVegaJuan.vista;
 
-import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;
+import edu.ub.prog2.QuitaquisTamayDennis.model.FitxerAudio;//maikel
 import edu.ub.prog2.cooperatiu.bridges.BridgeCtrlReproductor;//maikel
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
@@ -22,10 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Clase reproductor que comunicara amb les clases seguents
- * BridgeCtrlReproductor que comunicara amb la clase CtrlReproductor al paquet QuitaquisTamayDennis.controlador
- * BridgeFitxerAudio que comunicara amb la clase FitxerAudio al paquet QuitaquisTamayDennis.controlador
- * BridgeLlistaReproduccio que comunicara amb la clase LlistaReproduccio al paquet QuitaquisTamayDennis.controlador
- * 
+ * BridgeCtrlReproductor que comunicara amb la clase CtrlReproductor al paquet QuitaquisTamayDennis.controlador 
  * @author Juan Marin
  */
 public class Reproductor5 extends javax.swing.JFrame {
@@ -40,7 +37,6 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     /** Creates new form Reproductor4 */
     public Reproductor5() {
-        //FrmAfegirFitxer nouFitxer;
         _ctrl = new BridgeCtrlReproductor();
         initComponents();
         //this.setExtendedState(Reproductor4.MAXIMIZED_BOTH);
@@ -750,7 +746,6 @@ public class Reproductor5 extends javax.swing.JFrame {
             showPauseButton();
 
         } catch (Exception e) {
-            System.out.println(e.toString());
             return false;
         }
         return true;
@@ -759,7 +754,7 @@ public class Reproductor5 extends javax.swing.JFrame {
 
     private boolean afegirFitxerACua(int numFitxer) {
         try {
-            _ctrl.afegirNouFitxerCuaReproduccio(numFitxer + 1);
+            _ctrl.afegirNouFitxerCuaReproduccio(numFitxer);
             omplirLlistaCuaReproduccio();
 
         } catch (Exception e) {

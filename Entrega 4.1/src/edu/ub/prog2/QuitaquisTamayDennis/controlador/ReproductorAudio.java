@@ -24,7 +24,7 @@ public class ReproductorAudio extends ReproductorBasic {
     private boolean CYCLIC = false;
     private CuaReproduccio cua;
     private CuaReproduccio cuaTmp = cua;
-    private int pista = 0;
+     int pista = 0;
 
     //Getter i Setters
     public boolean isPAUSE() {
@@ -85,7 +85,7 @@ public class ReproductorAudio extends ReproductorBasic {
 
     //Constructor
     public ReproductorAudio() {
-
+        
         super();
         cua = new CuaReproduccio();
 
@@ -119,11 +119,11 @@ public class ReproductorAudio extends ReproductorBasic {
 
     }
 
-    @Override
+    /*@Override
     public void onStop(ReproductorEvent re) {
         this.PLAY = false;
         this.STOP = true;
-    }
+    }*/
 
     @Override
     public void onEndFile(ReproductorEvent re) {
@@ -183,7 +183,6 @@ public class ReproductorAudio extends ReproductorBasic {
             try {
 
                 stop();
-                System.out.println(cua.getRutaCompleta(pista));
                 openAudioFile(cua.getRutaCompleta(pista));
 
             } catch (FitxerAudioErrorException ex) {
@@ -192,7 +191,6 @@ public class ReproductorAudio extends ReproductorBasic {
             }
 
             play();
-            //System.out.println("Sonant: " + cua.getNomExtensioAudio(pista));
         }
 
     }
