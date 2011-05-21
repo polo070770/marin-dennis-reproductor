@@ -212,10 +212,8 @@ public class CtrlReproductor {
         parar();
         
         mi_reproductor = new ReproductorAudio();
-
+        
         mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
-        System.out.println(audio.toString());
-        System.out.println(mi_reproductor.pista);
         mi_reproductor.Play();
 
     }
