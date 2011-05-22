@@ -63,8 +63,9 @@ public class ReproductorAudio extends ReproductorBasic {
         return RANDOM;
     }
 
-    public void setRANDOM(boolean RANDOM) {
-        this.RANDOM = RANDOM;
+    public boolean setRANDOM() {
+        this.RANDOM = !RANDOM;
+        return this.RANDOM;
     }
 
     public boolean isCYCLIC() {
@@ -230,7 +231,7 @@ public class ReproductorAudio extends ReproductorBasic {
         if (!this.RANDOM) {
 
             this.cuaTmp = this.cua;
-            this.cua.shuffle();
+            //this.cua.shuffle();
             this.RANDOM = true;
 
         } else {
@@ -265,5 +266,8 @@ public class ReproductorAudio extends ReproductorBasic {
             canContinue();
 
         }
+    }
+    public void randomize(){
+        this.cua.shuffle();
     }
 }
