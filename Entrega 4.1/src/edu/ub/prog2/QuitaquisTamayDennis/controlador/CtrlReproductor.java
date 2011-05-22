@@ -222,14 +222,18 @@ public class CtrlReproductor {
 
         parar();
         
-        mi_reproductor = new ReproductorAudio();
+        //mi_reproductor = new ReproductorAudio();
 
         for (FitxerAudio audio : al) {
 
             mi_reproductor.obteCuaReproduccio().afegirAudio(audio);
             
         }
-
+        System.out.println("l'if es " +mi_reproductor.isRANDOM());
+        if(mi_reproductor.isRANDOM()){
+            System.out.println("som aqui");
+            mi_reproductor.randomize();
+        }
         mi_reproductor.Play();
 
 
@@ -239,14 +243,14 @@ public class CtrlReproductor {
 
         String estat = "";
 
-        if (!mi_reproductor.isRANDOM()) {
+        if (mi_reproductor.setRANDOM()) {
 
-            mi_reproductor.randomCuaReproduccio();
+            mi_reproductor.randomize();
             estat = "Reproduccio aleatoria activada";
 
         } else {
 
-            mi_reproductor.randomCuaReproduccio();
+            mi_reproductor.randomize();
             estat = "Reproduccio aleatori desactivada";
 
         }

@@ -31,6 +31,7 @@ public class CuaReproduccio extends LlistaReproduccio {
      * Funcio que desordena la cua de reproducció
      */
     public void shuffle() {
+        System.out.println("fem un aleatori");
         for (int i = super.getLlistaAudio().size() - 1; i > 0; i--) {
             int rand = (int) (Math.random() * (i + 1));
             FitxerAudio temp = super.getLlistaAudio().get(i);
